@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Material</title>
+</head>
+
+<body>
+
+    <h1>Edit Material</h1>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="name"
+            value="{{ material.name }}"
+            required
+        >
+
+        <input
+            type="number"
+            name="width"
+            value="{{ material.width }}"
+            required
+        >
+
+        <input
+            type="number"
+            name="height"
+            value="{{ material.height }}"
+            required
+        >
+
+        <input
+            type="number"
+            name="price"
+            value="{{ material.price }}"
+            required
+        >
+
+        <button type="submit">
+
+            Save Changes
+
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/">
+
+        Back
+
+    </a>
+
+</body>
+
+</html>

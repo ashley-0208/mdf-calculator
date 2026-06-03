@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Test",
+        "width": 50.0,
+        "height": 50.0,
+        "price": 6000000.0
+    },
+    {
+        "name": "Test2",
+        "width": 20.0,
+        "height": 20.0,
+        "price": 200000.0
+    }
+]
