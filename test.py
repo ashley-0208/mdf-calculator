@@ -1,14 +1,13 @@
-from data_manager import add_material
-from data_manager import load_materials
+from database import *
 
+create_table()
 
-add_material(
-    "MDF",
+update_material_db(
+    "MDF Test",
+    "MDF Premium",
     366,
     183,
-    5000000
+    9000000
 )
 
-materials = load_materials()
-
-print(materials)
+print(get_all_materials())

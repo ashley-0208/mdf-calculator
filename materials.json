@@ -1,8 +1,8 @@
 [
     {
         "name": "MDF",
-        "width": 366.0,
-        "height": 183.0,
+        "width": 50.0,
+        "height": 60.0,
         "price": 8000000.0
     },
     {
@@ -10,11 +10,5 @@
         "width": 60.0,
         "height": 80.0,
         "price": 500000.0
-    },
-    {
-        "name": "Test",
-        "width": 80.0,
-        "height": 80.0,
-        "price": 5000000.0
     }
 ]

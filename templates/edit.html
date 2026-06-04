@@ -1,59 +1,83 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="fa">
 
 <head>
-    <title>Edit Material</title>
+    <meta charset="UTF-8">
+    <title>ویرایش متریال</title>
 </head>
 
 <body>
 
-    <h1>Edit Material</h1>
+```
+<h1>ویرایش متریال</h1>
 
-    <form method="POST">
+<form method="POST">
 
-        <input
-            type="text"
-            name="name"
-            value="{{ material.name }}"
-            required
-        >
-
-        <input
-            type="number"
-            name="width"
-            value="{{ material.width }}"
-            required
-        >
-
-        <input
-            type="number"
-            name="height"
-            value="{{ material.height }}"
-            required
-        >
-
-        <input
-            type="number"
-            name="price"
-            value="{{ material.price }}"
-            required
-        >
-
-        <button type="submit">
-
-            Save Changes
-
-        </button>
-
-    </form>
-
+    <label>نام متریال</label>
     <br>
 
-    <a href="/">
+    <input
+        type="text"
+        name="name"
+        value="{{ material.name }}"
+        required
+    >
 
-        Back
+    <br><br>
 
-    </a>
+    <label>عرض ورق</label>
+    <br>
+
+    <input
+        type="number"
+        name="width"
+        value="{{ material.width }}"
+        required
+    >
+
+    <br><br>
+
+    <label>طول ورق</label>
+    <br>
+
+    <input
+        type="number"
+        name="height"
+        value="{{ material.height }}"
+        required
+    >
+
+    <br><br>
+
+    <label>قیمت</label>
+    <br>
+
+    <input
+        type="number"
+        name="price"
+        value="{{ material.price }}"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+
+        ذخیره تغییرات
+
+    </button>
+
+</form>
+
+<br>
+
+<a href="/">
+
+    بازگشت به صفحه اصلی
+
+</a>
+```
 
 </body>
 

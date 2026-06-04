@@ -1,167 +1,184 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="fa">
 
 <head>
-    <title>MDF Calculator</title>
+
+```
+<meta charset="UTF-8">
+
+<title>محاسبه گر MDF</title>
+```
+
 </head>
 
 <body>
 
-    <h1>MDF Calculator</h1>
+```
+<h1>محاسبه گر MDF</h1>
 
-    <h2>Add Material</h2>
+<h2>اضافه کردن متریال</h2>
 
-    <form method="POST">
+<form method="POST">
 
-        <input
-            type="hidden"
-            name="form_type"
-            value="add_material"
-        >
+    <input
+        type="hidden"
+        name="form_type"
+        value="add_material"
+    >
 
-        <input
-            type="text"
-            name="name"
-            placeholder="Material Name"
-            required
-        >
+    <input
+        type="text"
+        name="name"
+        placeholder="نام متریال"
+        required
+    >
 
-        <input
-            type="number"
-            name="width"
-            placeholder="Width"
-            required
-        >
+    <input
+        type="number"
+        name="width"
+        placeholder="عرض ورق"
+        required
+    >
 
-        <input
-            type="number"
-            name="height"
-            placeholder="Height"
-            required
-        >
+    <input
+        type="number"
+        name="height"
+        placeholder="طول ورق"
+        required
+    >
 
-        <input
-            type="number"
-            name="price"
-            placeholder="Price"
-            required
-        >
+    <input
+        type="number"
+        name="price"
+        placeholder="قیمت"
+        required
+    >
 
-        <button type="submit">
-            Add Material
-        </button>
+    <button type="submit">
 
-    </form>
+        افزودن
 
-    <hr>
+    </button>
 
-    <h2>Materials</h2>
+</form>
 
-    <table border="1">
+<hr>
 
-        <tr>
+<h2>لیست متریال ها</h2>
 
-            <th>Name</th>
-            <th>Width</th>
-            <th>Height</th>
-            <th>Price</th>
-            <th>Edit</th>
-            <th>Delete</th>
+<table border="1">
 
-        </tr>
+    <tr>
+
+        <th>نام</th>
+        <th>عرض</th>
+        <th>طول</th>
+        <th>قیمت</th>
+        <th>ویرایش</th>
+        <th>حذف</th>
+
+    </tr>
+
+    {% for material in materials %}
+
+    <tr>
+
+        <td>{{ material.name }}</td>
+
+        <td>{{ material.width }}</td>
+
+        <td>{{ material.height }}</td>
+
+        <td>{{ "{:,.0f}".format(material.price) }}</td>
+
+        <td>
+
+            <a href="/edit/{{ material.name }}">
+
+                ویرایش
+
+            </a>
+
+        </td>
+
+        <td>
+
+            <a href="/delete/{{ material.name }}">
+
+                حذف
+
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<hr>
+
+<h2>محاسبه قیمت قطعه</h2>
+
+<form method="POST">
+
+    <input
+        type="hidden"
+        name="form_type"
+        value="calculate_price"
+    >
+
+    <select name="material">
 
         {% for material in materials %}
 
-        <tr>
+        <option value="{{ material.name }}">
 
-            <td>{{ material.name }}</td>
+            {{ material.name }}
 
-            <td>{{ material.width }}</td>
-
-            <td>{{ material.height }}</td>
-
-            <td>{{ "{:,.0f}".format(material.price) }}</td>
-
-            <td>
-
-                <a href="/edit/{{ material.name }}">
-                    Edit
-                </a>
-
-            </td>
-
-            <td>
-
-                <a href="/delete/{{ material.name }}">
-                    Delete
-                </a>
-
-            </td>
-
-        </tr>
+        </option>
 
         {% endfor %}
 
-    </table>
+    </select>
 
-    <hr>
+    <input
+        type="number"
+        name="piece_width"
+        placeholder="عرض قطعه"
+        required
+    >
 
-    <h2>Piece Calculator</h2>
+    <input
+        type="number"
+        name="piece_height"
+        placeholder="طول قطعه"
+        required
+    >
 
-    <form method="POST">
+    <button type="submit">
 
-        <input
-            type="hidden"
-            name="form_type"
-            value="calculate_price"
-        >
+        محاسبه
 
-        <select name="material">
+    </button>
 
-            {% for material in materials %}
+</form>
 
-            <option value="{{ material.name }}">
+{% if final_price %}
 
-                {{ material.name }}
+<h3>
 
-            </option>
+    قیمت نهایی:
+    {{ "{:,.0f}".format(final_price) }}
 
-            {% endfor %}
+    تومان
 
-        </select>
+</h3>
 
-        <input
-            type="number"
-            name="piece_width"
-            placeholder="Piece Width"
-            required
-        >
-
-        <input
-            type="number"
-            name="piece_height"
-            placeholder="Piece Height"
-            required
-        >
-
-        <button type="submit">
-
-            Calculate
-
-        </button>
-
-    </form>
-
-    {% if final_price %}
-
-    <h3>
-
-        Final Price:
-        {{ "{:,.0f}".format(final_price) }}
-
-    </h3>
-
-    {% endif %}
+{% endif %}
+```
 
 </body>
 

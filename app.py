@@ -11,13 +11,13 @@ from data_manager import (
 )
 
 from calculator import calculate_piece_price
+from database import create_table
 
 app = Flask(__name__)
 
 
 @app.route("/", methods=["GET", "POST"])
 def home():
-
     final_price = None
 
     if request.method == "POST":
@@ -62,7 +62,6 @@ def home():
             for material in materials:
 
                 if material["name"] == selected_material:
-
                     final_price = calculate_piece_price(
                         material["width"],
                         material["height"],
@@ -84,7 +83,6 @@ def home():
 
 @app.route("/delete/<material_name>")
 def delete(material_name):
-
     delete_material(material_name)
 
     return redirect("/")
@@ -92,7 +90,6 @@ def delete(material_name):
 
 @app.route("/edit/<material_name>", methods=["GET", "POST"])
 def edit(material_name):
-
     materials = load_materials()
 
     selected_material = None
@@ -100,13 +97,11 @@ def edit(material_name):
     for material in materials:
 
         if material["name"] == material_name:
-
             selected_material = material
 
             break
 
     if request.method == "POST":
-
         new_name = request.form["name"]
 
         width = float(request.form["width"])
@@ -130,6 +125,8 @@ def edit(material_name):
         material=selected_material
     )
 
+
+create_table()
 
 if __name__ == "__main__":
     app.run(debug=True)
